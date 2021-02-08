@@ -18,10 +18,10 @@ def convert_muon_data(fname):
             if index==0:
                 outf.write(','.join(row)+'\n')
                 continue
-	    if contains_truth:
+            if contains_truth:
                 nevt,nmu,eta,mass,phi,pt,charge,truth = convert_row_truth(row)
-		truth = True if truth == 'True' else False
-	    else:
+                truth = True if truth == 'True' else False
+            else:
                 nrow,nevt,nmu,eta,mass,phi,pt,charge = convert_row(row)
             px = pt*np.cos(phi)
             py = pt*np.sin(phi)
@@ -30,8 +30,8 @@ def convert_muon_data(fname):
             pz = p*np.cos(theta)
             E = np.sqrt(p*p + mass*mass)
             outvals = [nevt,nmu,px,py,pz,E,charge]
-	    if contains_truth: outvals.append(truth)
-	    else: outvals.insert(0,nrow)
+        if contains_truth: outvals.append(truth)
+        else: outvals.insert(0,nrow)
             outrow = ','.join(str(x) for x in outvals)
             outf.write(outrow+'\n')
         
