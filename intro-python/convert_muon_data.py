@@ -31,9 +31,10 @@ def convert_muon_data(fname):
             E = np.sqrt(p*p + mass*mass)
             outvals = [nevt,nmu,px,py,pz,E,charge]
         if contains_truth: outvals.append(truth)
-        else: outvals.insert(0,nrow)
-            outrow = ','.join(str(x) for x in outvals)
-            outf.write(outrow+'\n')
+        else:
+            outvals.insert(0,nrow)
+        outrow = ','.join(str(x) for x in outvals)
+        outf.write(outrow+'\n')
         
     csv_file.close()
     outf.close()
