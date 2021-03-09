@@ -1,0 +1,74 @@
+\title{Homework 1}
+%\author{
+%        Frank Golf \\
+%                Department of Physics and Astronomy \\
+%        University of Nebraska-Lincoln \\
+%}
+%\date{\today}
+
+\documentclass[12pt]{article}
+
+\makeatletter
+\def\@seccntformat#1{%
+  \expandafter\ifx\csname c@#1\endcsname\c@section\else
+  \csname the#1\endcsname\quad
+  \fi}
+\makeatother
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fancyvrb}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{diagbox}
+\usepackage{rotating}
+\usepackage{slashed} 
+\usepackage{url}
+
+\begin{document}
+\maketitle
+
+Homework should be submitted by email, as a single Jupyter notebook file with name hw1\_lastname.ipynb.  
+The code you write should be compatible with Python version 3.7.0  
+Partial credit may be given, so write your code clearly with as many comments as needed to understand what you are attempting to do and why.
+The homework is due before the the start of class on Monday, February 1. 
+
+\begin{enumerate}
+	\item Write a program to determine the prime factors of a user supplied number.  The script should contain a function \textit{prime\_factors} that takes a single argument that is an integer.  It should return a sorted list of the prime factors.  You may want to test your code on some sample numbers using web calculators such as \url{https://www.calculatorsoup.com/calculators/math/prime-factors.php}.
+
+Be careful to handle cases where a number's divisors include multiple occurrences of the same prime factor.  Your program should handle incorrect user input and not crash, but rather output some kind of complaining message to the user asking him/her to try again.  You can accomplish this by checking the input or, more elegantly, using the python \textbf{try}$\ldots$\textbf{except} statements for exception handling, see \url{http://docs.python.org/3/tutorial/errors.html}.  If you have time you should try both ways (but you do not have to), since there is something to learn in both approaches.
+
+    \item Many websites require users to input a username and password to register. Write a function to generate a random password that meets the following criteria:
+    	\begin{enumerate}
+		\item At least one lower case letter
+		\item At least one upper case letter
+		\item At least one number
+		\item At least one character that is not a letter or number
+		\item Whitespace characters are not allowed
+		\item At least 6 characters long
+		\item No more than 20 characters long
+	\end{enumerate}
+
+The function should be called  \textit{generate\_password}. It should take no arguments and return a string with the randomly generated password.  You should also write a second function called \textit{check\_password}, which takes a single argument that is a proposed password and returns a boolean indicating whether or not the password is valid.  Hint: you may want to build your solution using existing python modules such as \textbf{random} or \textbf{string}.
+
+\item Write a function called \textit{get\_directory\_contents}.  The function should take two arguments, the first a path and the second a boolean that has default value \textbf{False}.  The function should run the shell command \textit{/bin/ls} on the user specified path, return the contents of the directory as a list and, if the boolean is true, print a comma-separated list of the contents.  Write a second function called \textit{get\_list\_of\_files}.  This function should take three arguments: the first a path, the second an (optional) file extension that should default to any extension, and an optional third boolean argument that has the default value \textbf{False}.  The function should return a list of all files in the input path that match the input file extension.  If the boolean input is set to \textbf{True}, it should also print a formatted list to the screen. You may find the python \textbf{os} or \textbf{subprocess} modules helpful.  Something like this could be useful because the output of the shell command would then be available to python for further processing.  Use the functions you've written to determine the number of perl scripts in the path \textit{/usr}, i.e. files that end in '.pl'.
+
+\item Write a function called \textit{hangman} that allows the user to play hangman.  It should prompt the user to guess and write feedback as needed to the screen.  The program should randomly select a word and, at each step, indicate to the user all relevant information, e.g. which letters have been guessed (correct and incorrectly) and the number of guesses remaining.  The game should end when the word is completed or the player runs out of guesses (after 6 incorrect guesses).  Hint: you may want to consider the \textbf{nltk} and \textbf{random} modules.
+
+%\item Benford's law says that in many numerical datasets the frequency of the first digit of each number is not constant.  There tend to be more numbers with most significant (decimal) digit 1 than 9.  This applies best to datasets where the numbers span several orders of magnitude.  The file CensusTownAndCityPopulations.csv is a comma-separated (csv) file downloaded from the United States Census Bureau and it lists the number of inhabitants for every town in the United States.  There are three columns in the csv file: State, Town, Inhabitants.  The first row is a header row.  Write a program to read this file, extract the most significant digit, and plot it in a histogram.  Some hints:
+%
+%\begin{itemize}
+%\item The csv file is saved as utf-8 instead of ascii (the curse of text files).  If you are working with Linux or mac OS, do 'file CensusTownAndCityPopulations.csv' to see what I mean.  So watch out for that.
+%\item If you are working with Linux or mac OS, have a look inside the file with 'more CensusTownAndCityPopulations.csv'.  The numbers are formatted a bit weirdly.
+%\item There is at least one town with a comma in the name, so pay attention to that as well.
+%\end{itemize}
+%
+%To simplify grading, include the csv file in the tgz file that you submit.  Benford's law is used in forensic accounting to detect fraud, \url{https://www.nigrini.com}.
+    
+\end{enumerate}
+
+\bibliographystyle{abbrv}
+\bibliography{simple}
+
+\end{document}
